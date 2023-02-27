@@ -41,6 +41,9 @@ import { CreditInquiryFormService } from './credit-inquiry-form.service';
         creditResult: data.creditResult,
         creditLimit:  data.creditLimit,
         }
-    }});
+    }},
+    error => {
+      this.creditApplicationNotFound = true;
+    });
   }
   }
