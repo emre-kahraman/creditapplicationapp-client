@@ -1,0 +1,32 @@
+<div class="card w-50 ml-1 rounded bg-light">
+  <ul role="tablist" class="nav bg-light nav-tabs rounded nav-fill mb-3">
+    <li class="nav-item"> <a  routerLinkActive="active" routerLink="/application" href="/application" class="nav-link"> Credit Application </a> </li>
+    <li class="nav-item"> <a  routerLinkActive="active" routerLink="/inquiry"  href="/inquiry" class="nav-link "> Credit Application Inquiry </a> </li>
+</ul>
+    <div  class="container" id="creditApplicationInquiry">
+      <h1 class="h1">Credit Application Inquiry</h1>
+      <form [formGroup] = "inquiryForm" (ngSubmit)="getCreditResult()" novalidate>
+        <div class="form-group">
+          <label for="name" class="form-label">Personal Identification Number</label>
+          <input type="text" class="form-control" formControlName="personalIdentificationNumber" id="personalIdentificationNumber" required>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">BirthDate</label>
+          <input type="date" class="form-control" formControlName="birthDate" placeholder="yyyy-mm-dd" id="birthDate" required>
+        </div>
+
+        <div class="form-group mt-2 mb-3">
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+
+      </form>
+  </div>
+</div>
+<div *ngIf="response" class="card rounded p-3 mb-2 w-50">
+  <p class="form-label">Credit Result: {{response.creditResult}}</p>
+  <p class="form-label">Credit Limit: {{response.creditLimit}}</p>
+</div>
+<div *ngIf="creditApplicationNotFound" class="card rounded p-3 mb-2 w-50">
+  <p class="form-label">Credit Result Not Found</p>
+</div>
